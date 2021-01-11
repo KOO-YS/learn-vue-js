@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <app-header v-on:하위컴포넌트 발생 이벤트 이름="상위 컴포넌트 메서드 이름"></app-header> -->
+      <app-header v-on:pass="logText"></app-header>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let appHeader = {
+        template: '<button v-on:click="passEvent">click</button>',
+        methods: {
+            passEvent: function(){
+                this.$emit('pass');         // 이벤트 발생('event-name')
+            }
+        }
+    }
+    new Vue({
+    el: '#app',
+    components: {
+        'app-header': appHeader
+    },
+    data: {
+        message:'data-msg'
+    },
+    methods: {
+        logText: function(){
+            console.log('text logging');
+        }
+    }
+    })
+</script>
+  </body>
+</html>

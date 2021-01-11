@@ -45,3 +45,47 @@ new Vue({
 
 ### 뷰 컴포넌트
 화면을 구성하는 영역을 구분하고 재사용성을 높임
+
+##### 컴포넌트간 데이터 통신
+- `props` : 상위 컴포넌트의 데이터를 하위 컴포넌트에게 전달. 데이터 반응형 O
+    ```javascript
+    <app-header v-bind:프롭스 속성이름 ="상위 컴포넌트 데이터 이름"></app-header>
+
+    // ...
+
+    let appHeader = {
+        template: '<h1>{{ 프롭스 속성이름 }}</h1>',
+        // Root에 있는 데이터를 하위 컴포넌트인 app-header에게 props
+        props: ['프롭스 속성이름']
+    }
+    ```
+- `events` : 하위 컴포넌트에서 상위 컴포넌트로 이벤트를 올림
+    ```javascript
+    <app-header v-on:하위컴포넌트 발생 이벤트 이름="상위 컴포넌트 메서드 이름"></app-header>
+    
+    // ...
+
+    let appHeader = {
+        template: '<button v-on:click="passEvent">click</button>',
+        methods: {
+            passEvent: function(){
+                this.$emit('pass');         // 이벤트 발생
+            }
+        }
+    }
+
+    // ...
+
+    new Vue({
+    el: '#상위컴포넌트',
+    components: {
+        'app-header': appHeader
+    },
+    methods: {
+        상위컴포넌트메서드이름: function(){
+            console.log('text logging');
+        }
+    }
+    })
+
+    ```
