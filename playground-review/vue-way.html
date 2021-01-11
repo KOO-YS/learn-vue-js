@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+<!-- <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script> -->
+<script>
+    let div = document.querySelector('#app');
+    
+    let viewModel = {};
+    
+    (function() {
+        function init(){
+            Object.defineProperty(viewModel, 'str', {
+                // 속성에 접근했을 때 동작 정의
+                get : function(){  // CONSOLE -> viewModel.str
+                    console.log('접근');
+                },
+                // 속성에 값을 할당할 때 동작 정의
+                set: function(newValue){    // CONSOLE -> viewModel.str = 'test'
+                    console.log('할당', newValue);
+                    render(newValue);
+                }
+            });
+        }
+        
+        function render(value){
+            div.innerHTML = value;
+        }
+    
+        init();
+    })();
+</script>
+</body>
+</html>
