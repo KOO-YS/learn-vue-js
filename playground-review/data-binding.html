@@ -10,8 +10,24 @@
         <!-- 데이터 바인딩 -->
         {{ str }}
         <br>
-        <p>num :: {{ num }}</p>
+        <p v-bind:id="uuid" v-bind:class="name">num :: {{ num }}</p>
         <p>doublenum :: {{ doubleNum }}</p>
+
+        <div v-if='loading'>
+            <!-- 태그 자체의 유무 조절 -->
+            loading...?
+        </div>
+        <div v-else>
+            test user has been logged in
+        </div>
+        <br>
+        <div v-show="loading">
+            <!-- 태그가 남아있되 style="display: none 로 조절" -->
+            Show Loading
+        </div>
+
+        <input type="text" v-model='message'>
+        <p>message is : {{ message }}</p>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
@@ -19,7 +35,13 @@
         el: '#app',
         data: {
             str: 'hi',
-            num: 10
+            num: 10,
+            uuid: 'qwerty',     
+            // p태그 id에 데이터 바인딩
+            name: 'text-blue',
+            // p태그 class에 데이터 바인딩
+            loading: true,
+            message: ''
         },
         computed: {
             doubleNum: function(){
