@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    {{ users }}
+    <button v-on:click="getData">get user</button>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+new Vue({
+    el: '#app',
+    data: {
+        users:[]
+    },
+    methods: {
+        getData: function(){
+            const vm = this;
+            console.log("view model this : ",this);
+            // log : Vue {_uid: 0, _isVue: true, $options: {…}, _renderProxy: Proxy, _self: Vue, …}
+
+            axios.get('https://jsonplaceholder.typicode.com/users')
+            .then(function(response){
+            
+                console.log(response);
+            
+                console.log("axios this : ",this);
+                // log : Window {window: Window, self: Window, document: document, name: "", location: Location, …}
+                vm.users = response.data;
+            })
+            .catch(function(error){
+                console.log(error);
+            });
+        }
+    }
+});
+</script>
+</body>
+</html>
