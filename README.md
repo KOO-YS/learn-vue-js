@@ -89,3 +89,72 @@ new Vue({
     })
 
     ```
+
+
+<br>
+
+---
+
+<br>
+
+### 뷰 라우터
+뷰 라이브러리를 이용하여 싱글 페이지 애플리케이션을 구현할 때 사용하는 라이브러리
+
+> http://127.0.0.1:5500/playground-review/router.html#/
+> url뒤 #가 신경쓰인다 (-> hash mode인 상태)
+> [HTML5 히스토리 모드](https://router.vuejs.org/kr/guide/essentials/history-mode.html#%EC%84%9C%EB%B2%84-%EC%84%A4%EC%A0%95-%EC%98%88%EC%A0%9C)
+
+<br>
+
+---
+
+<br>
+
+### Axios
+뷰에서 권고하는 HTTP 통신 라이브러리
+[Axios in github](https://github.com/axios/axios)
+
+<br>
+
+---
+
+<br>
+
+### 템플릿 문법
+뷰로 화면을 조작하는 방법 
+- 데이터 바인딩
+    ```html
+    <div>{{ msg }}</div>
+    <script>
+        new Vue({
+            data: {
+                msg: 'print msg'
+            }
+        });
+    </script>
+    ```
+- 디렉티브 : html 태그 안에 `v-*`로 시작하는 속성
+    ```html
+    <div>
+        Hello <span v-if="show">vue js</span>
+    </div>
+
+    <script>
+        new Vue({
+            data: {
+                show: false
+            }
+        });
+    </script>
+    
+    ```
+
+<br> 
+
+##### 변경을 감지하는 `watch`와 `computed`
+- watch
+    - 지정한 대상의 값이 변경될 때마다 정의된 함수가 실행 
+    - 특정 조건을 만족할 때 함수를 실행하는 트리거로써 사용
+- computed
+    - 반응형 getter
+    - 계산된 값을 출력하는 용
