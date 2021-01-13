@@ -1,8 +1,9 @@
 # learn-vue-js
 <br>
 
+> [인프런-Vuejs 시작하기](https://www.inflearn.com/course/Age-of-Vuejs/)
 > [follow Captain's teaching 🦸‍♂️](https://joshua1988.github.io/vue-camp/vue/instance.html#%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1)
-[the other](https://dahye-jeong.gitbook.io/vue-js/)
+[참고용 gitbook](https://dahye-jeong.gitbook.io/vue-js/)
 
 <br>
 <br>
@@ -158,3 +159,82 @@ new Vue({
 - computed
     - 반응형 getter
     - 계산된 값을 출력하는 용
+
+
+<br>
+
+---
+
+<br>
+
+### Vue CLI
+프로젝트 생성 시, 명령어를 통해 생성하는 방식 *(Command Line Interface)*
+```
+npm install -g @vue/cli
+```
+> vue CLI v4 기준
+```
+vue create 플젝명
+
+ $ cd 플젝명
+ $ npm run serve
+```
+
+##### vue 파일 작성법
+```javascript
+var appHeader = {
+    template: '<div>header</div>',
+    methods: {
+       addNum: function(){
+
+       } 
+    }
+}
+<template>
+  <!-- HTML -->
+  <div>Header</div>
+</template>
+
+<script>
+export default {
+// JS
+methods: {
+    
+        
+    }
+}
+}
+</script>
+
+<style>
+/* CSS */
+</style>
+```
+```javascript
+
+<template>
+  <div> 
+      <header>app</header>
+      <br>
+      {{ str }}
+  </div>
+  <!-- 최상단 앨리먼트는 하나만 존재 가능(안으로만 확장) -->
+  <!-- <div></div> 추가 불가능 -->
+</template>
+
+<script>
+export default {
+  // 함수를 리턴하는 형식으로 진행해야한다
+  data: function(){
+    return {
+      str: 'hi'
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>
+
+```
